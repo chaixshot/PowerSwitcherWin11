@@ -15,13 +15,13 @@
         UseLayoutRounding="True"
         WindowStyle="None"
 		ResizeMode="NoResize"
-        TextOptions.TextFormattingMode="Display"
-        MaxHeight="600" 
+        TextOptions.TextFormattingMode="Display" 
         Width="360"
         x:Name="SchemasWindow"
         Deactivated="Window_Deactivated"
         PreviewKeyDown="Window_PreviewKeyDown" Background="Transparent" Foreground="Transparent"
         >
+
     <Window.Resources>
         <SolidColorBrush x:Key="WindowForeground" Color="Black" />
         <SolidColorBrush x:Key="WindowBackground" Color="White" />
@@ -34,8 +34,9 @@
             <Setter Property="Border.Background" Value="Transparent"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{DynamicResource WindowForeground}"/>
-            <Setter Property="Padding" Value="0, 0, 10, 0"/>
+            <Setter Property="Padding" Value="4,2,4,2"/>
         </Style>
+
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
@@ -43,43 +44,30 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="Padding" Value="12, 0, 0, 0"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter Margin="{TemplateBinding Padding}" />
-                        </Grid>
+                        <Border x:Name="border"
+                            CornerRadius="4">
+                            <Grid Background="{TemplateBinding Background}">
+                                <ContentPresenter Margin="{TemplateBinding Padding}" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MouseOverItemBackground}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedItemBackground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsSelected" Value="true" />
-                        <Condition Property="IsMouseOver" Value="false" />
-                    </MultiTrigger.Conditions>
-                    <Setter Property="Background" Value="{DynamicResource SelectedItemBackground}" />
-                </MultiTrigger>
-
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsSelected" Value="false" />
-                        <Condition Property="IsMouseOver" Value="true" />
-                    </MultiTrigger.Conditions>
-                    <Setter Property="Background" Value="{DynamicResource MouseOverItemBackground}" />
-                </MultiTrigger>
-
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsSelected" Value="true" />
-                        <Condition Property="IsMouseOver" Value="true" />
-                    </MultiTrigger.Conditions>
-                    <Setter Property="Background" Value="{DynamicResource MouseOverSelectedItemBackground}" />
-                </MultiTrigger>
-
-            </Style.Triggers>
         </Style>
+
         <Style TargetType="{x:Type Label}">
             <Setter Property="Height" Value="42"/>
             <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -98,12 +86,14 @@
     <Window.DataContext>
         <viewModels:MainWindowViewModel x:Name="ViewModel"/>
     </Window.DataContext>
+
     <d:Window.DataContext>
         <viewModels:MainWindowViewModelDesign/>
     </d:Window.DataContext>
 
+
     <Border
-        CornerRadius="10"
+        CornerRadius="8"
         Background="{DynamicResource WindowBackground}"
         >
         <ScrollViewer x:Name="LayoutRoot"
@@ -114,7 +104,7 @@
             Margin="0"
             PreviewMouseWheel="LayoutRoot_PreviewMouseWheel"
             >
-            <ListBox x:Name="ElementsList" KeyboardNavigation.TabNavigation="Cycle" Focusable="False" SelectionMode="Single" ItemsSource="{Binding Schemas}" SelectedItem="{Binding ActiveSchema}" IsSynchronizedWithCurrentItem="False" >
+            <ListBox x:Name="ElementsList" KeyboardNavigation.TabNavigation="Cycle" Focusable="False" SelectionMode="Single" ItemsSource="{Binding Schemas}" SelectedItem="{Binding ActiveSchema}" IsSynchronizedWithCurrentItem="False" BorderBrush="#00000000" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Name}" Tag="{Binding Guid}" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
@@ -123,5 +113,4 @@
             </ListBox>
         </ScrollViewer>
     </Border>
-
 </Window>

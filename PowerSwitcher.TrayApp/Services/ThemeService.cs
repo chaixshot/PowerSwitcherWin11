@@ -31,8 +31,8 @@ namespace PowerSwitcher.TrayApp.Services
             {
                 ReplaceBrush(dictionary, "WindowForeground", "ImmersiveApplicationTextDarkTheme");
             }
-            ReplaceBrushWithOpacity(dictionary, "SelectedItemBackground", "ImmersiveSystemAccent", 0.5);
-            ReplaceBrushWithOpacity(dictionary, "MouseOverSelectedItemBackground", "ImmersiveSystemAccent", 0.75);
+            ReplaceBrushWithOpacity(dictionary, "SelectedItemBackground", "ImmersiveSystemAccent", 0.9);
+            ReplaceBrushWithOpacity(dictionary, "MouseOverSelectedItemBackground", "ImmersiveSystemAccent", 1.0);
             ReplaceBrushWithOpacity(dictionary, "MouseOverItemBackground", "ImmersiveControlLightSelectHighlightSelectedHover", 0.3);
             (((App)Application.Current).TrayApp as TrayApp).UpdateTrayIcon();
         }
