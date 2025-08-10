@@ -1,19 +1,10 @@
-﻿using PowerSwitcher.TrayApp.Extensions;
+﻿using Microsoft.Win32;
+using PowerSwitcher.TrayApp.Extensions;
 using PowerSwitcher.TrayApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PowerSwitcher.TrayApp
 {
@@ -39,6 +30,7 @@ namespace PowerSwitcher.TrayApp
                 if (container != null) { container.Focus(); }
             };
             SourceInitialized += (s, e) => UpdateTheme();
+            SystemEvents.UserPreferenceChanged += (s, e) => UpdateTheme();
         }
 
         private void createAndHideWindow()
@@ -134,8 +126,8 @@ namespace PowerSwitcher.TrayApp
                     Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor());
                     break;
                 case TaskbarPosition.Bottom:
-                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - Width;
-                    Top = (taskbarState.TaskbarSize.top / this.DpiHeightFactor()) - Height;
+                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - (Width * 1.3);
+                    Top = (taskbarState.TaskbarSize.top / this.DpiHeightFactor()) - Height - 14;
                     break;
             }
         }

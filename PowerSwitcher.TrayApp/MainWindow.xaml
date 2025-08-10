@@ -16,31 +16,25 @@
         WindowStyle="None"
 		ResizeMode="NoResize"
         TextOptions.TextFormattingMode="Display"
-        
-        Icon="Tray.ico"
         MaxHeight="600" 
         Width="360"
-        
-        Foreground="{DynamicResource WindowForeground}"
-        Background="{DynamicResource WindowBackground}"
-    
         x:Name="SchemasWindow"
         Deactivated="Window_Deactivated"
-        PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewKeyDown="Window_PreviewKeyDown" Background="Transparent" Foreground="Transparent"
         >
     <Window.Resources>
         <SolidColorBrush x:Key="WindowForeground" Color="Black" />
         <SolidColorBrush x:Key="WindowBackground" Color="White" />
-        <SolidColorBrush x:Key="SelectedItemBackground" Color="Red" /> 
+        <SolidColorBrush x:Key="SelectedItemBackground" Color="Red" />
         <SolidColorBrush x:Key="MouseOverItemBackground" Color="Aqua" />
         <SolidColorBrush x:Key="MouseOverSelectedItemBackground" Color="Pink" />
 
         <Style TargetType="ListBox">
-            <Setter Property="Border.Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Border.Background" Value="Transparent"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{DynamicResource WindowForeground}"/>
-            <Setter Property="Padding" Value="0, 0, 10, 12"/>
+            <Setter Property="Padding" Value="0, 0, 10, 0"/>
         </Style>
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="FocusVisualStyle">
@@ -58,9 +52,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
 
-               
+            <Style.Triggers>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
                         <Condition Property="IsSelected" Value="true" />
@@ -84,7 +77,7 @@
                     </MultiTrigger.Conditions>
                     <Setter Property="Background" Value="{DynamicResource MouseOverSelectedItemBackground}" />
                 </MultiTrigger>
-                
+
             </Style.Triggers>
         </Style>
         <Style TargetType="{x:Type Label}">
@@ -100,9 +93,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-
     </Window.Resources>
+
     <Window.DataContext>
         <viewModels:MainWindowViewModel x:Name="ViewModel"/>
     </Window.DataContext>
@@ -110,7 +102,11 @@
         <viewModels:MainWindowViewModelDesign/>
     </d:Window.DataContext>
 
-    <ScrollViewer x:Name="LayoutRoot"
+    <Border
+        CornerRadius="10"
+        Background="{DynamicResource WindowBackground}"
+        >
+        <ScrollViewer x:Name="LayoutRoot"
             VerticalScrollBarVisibility="Auto"
             CanContentScroll="True"
             PanningMode="VerticalOnly"
@@ -118,13 +114,14 @@
             Margin="0"
             PreviewMouseWheel="LayoutRoot_PreviewMouseWheel"
             >
-        <ListBox x:Name="ElementsList" KeyboardNavigation.TabNavigation="Cycle" Focusable="False" SelectionMode="Single" ItemsSource="{Binding Schemas}" SelectedItem="{Binding ActiveSchema}" IsSynchronizedWithCurrentItem="False" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding Name}" Tag="{Binding Guid}" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </ScrollViewer>
+            <ListBox x:Name="ElementsList" KeyboardNavigation.TabNavigation="Cycle" Focusable="False" SelectionMode="Single" ItemsSource="{Binding Schemas}" SelectedItem="{Binding ActiveSchema}" IsSynchronizedWithCurrentItem="False" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}" Tag="{Binding Guid}" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Border>
 
 </Window>
