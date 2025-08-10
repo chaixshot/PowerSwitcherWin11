@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PowerSwitcher.TrayApp.Services
@@ -13,30 +14,39 @@ namespace PowerSwitcher.TrayApp.Services
             get { return !SystemParameters.HighContrast && UserSystemPreferencesService.IsTransparencyEnabled; }
         }
 
+        public static bool IsUseLightTheme
+        {
+            get { return Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize").GetValue("AppsUseLightTheme").ToString() == "1"; }
+        }
+
         public static void UpdateThemeResources(ResourceDictionary dictionary)
         {
             dictionary["WindowBackground"] = new SolidColorBrush(GetWindowBackgroundColor());
 
-            ReplaceBrush(dictionary, "WindowForeground", "ImmersiveApplicationTextDarkTheme"); 
+            if (IsUseLightTheme)
+            {
+                ReplaceBrush(dictionary, "WindowForeground", "ImmersiveApplicationTextLightTheme");
+            }
+            else
+            {
+                ReplaceBrush(dictionary, "WindowForeground", "ImmersiveApplicationTextDarkTheme");
+            }
             ReplaceBrushWithOpacity(dictionary, "SelectedItemBackground", "ImmersiveSystemAccent", 0.5);
             ReplaceBrushWithOpacity(dictionary, "MouseOverSelectedItemBackground", "ImmersiveSystemAccent", 0.75);
             ReplaceBrushWithOpacity(dictionary, "MouseOverItemBackground", "ImmersiveControlLightSelectHighlightSelectedHover", 0.3);
+            (((App)Application.Current).TrayApp as TrayApp).UpdateTrayIcon();
         }
 
         private static Color GetWindowBackgroundColor()
         {
             string resource;
-            if (SystemParameters.HighContrast)
+            if (IsUseLightTheme)
             {
-                resource = "ImmersiveApplicationBackground";
-            }
-            else if (UserSystemPreferencesService.UseAccentColor)
-            {
-                resource = IsWindowTransparencyEnabled ? "ImmersiveSystemAccentDark2" : "ImmersiveSystemAccentDark1";
+                resource = "ImmersiveApplicationTextDarkTheme";
             }
             else
             {
-                resource = "ImmersiveDarkChromeMedium";
+                resource = "ImmersiveApplicationTextLightTheme";
             }
 
             var color = AccentColorService.GetColorByTypeName(resource);

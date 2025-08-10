@@ -1,6 +1,8 @@
-﻿using Petrroll.Helpers;
+﻿using Microsoft.Win32;
+using Petrroll.Helpers;
 using PowerSwitcher.TrayApp.Configuration;
 using PowerSwitcher.TrayApp.Resources;
+using PowerSwitcher.TrayApp.Services;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -21,6 +23,15 @@ namespace PowerSwitcher.TrayApp
         IPowerManager pwrManager;
         ConfigurationInstance<PowerSwitcherSettings> configuration;
         #endregion
+        private static TrayApp instance;
+
+        public void UpdateTrayIcon()
+        {
+            string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
+            if (ThemeService.IsUseLightTheme)
+                icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.ico";
+            _trayIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri(icon)).Stream, WF.SystemInformation.SmallIconSize);
+        }
 
         #region Contructor
         public TrayApp(IPowerManager powerManager, ConfigurationInstance<PowerSwitcherSettings> config)
@@ -32,8 +43,6 @@ namespace PowerSwitcher.TrayApp
 
             _trayIcon = new WF.NotifyIcon();
             _trayIcon.MouseClick += TrayIcon_MouseClick;
-
-            _trayIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,/PowerSwitcher.TrayApp;component/Tray.ico")).Stream, WF.SystemInformation.SmallIconSize);
             _trayIcon.Text = string.Concat(AppStrings.AppName);
             _trayIcon.Visible = true;
 
@@ -41,6 +50,8 @@ namespace PowerSwitcher.TrayApp
 
             //Run automatic on-off-AC change at boot
             powerStatusChanged();
+
+            UpdateTrayIcon();
         }
 
         public void CreateAltMenu()
@@ -154,7 +165,7 @@ namespace PowerSwitcher.TrayApp
 
         private void powerStatusChanged()
         {
-            if(!configuration.Data.AutomaticOnACSwitch) { return; }
+            if (!configuration.Data.AutomaticOnACSwitch) { return; }
 
             var currentPowerPlugStatus = pwrManager.CurrentPowerStatus;
             Guid schemaGuidToSwitch = default(Guid);
@@ -172,7 +183,7 @@ namespace PowerSwitcher.TrayApp
             }
 
             IPowerSchema schemaToSwitchTo = pwrManager.Schemas.FirstOrDefault(sch => sch.Guid == schemaGuidToSwitch);
-            if(schemaToSwitchTo == null) { return; }
+            if (schemaToSwitchTo == null) { return; }
 
             pwrManager.SetPowerSchema(schemaToSwitchTo);
         }
