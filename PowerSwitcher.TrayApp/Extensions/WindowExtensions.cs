@@ -22,7 +22,7 @@ namespace PowerSwitcher.TrayApp.Extensions
 
                 var hideAnimation = new DoubleAnimation
                 {
-                    Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+                    Duration = new Duration(TimeSpan.FromSeconds(0.15)),
                     FillBehavior = FillBehavior.Stop,
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseIn }
                 };
@@ -74,7 +74,7 @@ namespace PowerSwitcher.TrayApp.Extensions
                 window.Activate();
                 var showAnimation = new DoubleAnimation
                 {
-                    Duration = new Duration(TimeSpan.FromSeconds(0.3)),
+                    Duration = new Duration(TimeSpan.FromSeconds(0.2)),
                     FillBehavior = FillBehavior.Stop,
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
