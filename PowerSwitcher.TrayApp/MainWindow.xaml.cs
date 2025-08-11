@@ -1,10 +1,10 @@
-﻿using Microsoft.Win32;
-using PowerSwitcher.TrayApp.Extensions;
+﻿using PowerSwitcher.TrayApp.Extensions;
 using PowerSwitcher.TrayApp.Services;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace PowerSwitcher.TrayApp
@@ -30,8 +30,14 @@ namespace PowerSwitcher.TrayApp
                 var container = ElementsList.ItemContainerGenerator.ContainerFromItem(ElementsList.SelectedItem) as FrameworkElement;
                 if (container != null) { container.Focus(); }
             };
-            SourceInitialized += (s, e) => UpdateTheme();
-            SystemEvents.UserPreferenceChanged += (s, e) => UpdateTheme();
+
+            // WPF-UI theme
+            ApplicationThemeManager.ApplySystemTheme();
+            Wpf.Ui.Appearance.SystemThemeWatcher.Watch(
+                this,                                    // Window class
+                Wpf.Ui.Controls.WindowBackdropType.Mica, // Background type
+                true                                     // Whether to change accents automatically
+            );
         }
 
         private void createAndHideWindow()
@@ -53,7 +59,6 @@ namespace PowerSwitcher.TrayApp
             else
             {
                 ViewModel.Refresh();
-                UpdateTheme();
                 UpdateWindowPosition();
                 this.ShowWithAnimation();
             }
@@ -91,25 +96,17 @@ namespace PowerSwitcher.TrayApp
         #endregion
 
         #region ServicesUpdates
-        private void UpdateTheme()
+
+        public static bool IsWindowTransparencyEnabled
         {
-            // Call UpdateTheme before UpdateWindowPosition in case sizes change with the theme.
-            ThemeService.UpdateThemeResources(Resources);
-            if (ThemeService.IsWindowTransparencyEnabled)
-            {
-                this.EnableBlur();
-            }
-            else
-            {
-                this.DisableBlur();
-            }
+            get { return !SystemParameters.HighContrast && UserSystemPreferencesService.IsTransparencyEnabled; }
         }
 
         private void UpdateWindowPosition()
         {
-            LayoutRoot.UpdateLayout();
-            LayoutRoot.Measure(new Size(double.PositiveInfinity, MaxHeight));
-            Height = LayoutRoot.DesiredSize.Height;
+            ElementsList.UpdateLayout();
+            ElementsList.Measure(new Size(double.PositiveInfinity, MaxHeight));
+            Height = ElementsList.DesiredSize.Height;
 
             var taskbarState = TaskbarService.GetWinTaskbarState();
             switch (taskbarState.TaskbarPosition)

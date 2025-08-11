@@ -2,14 +2,12 @@
 using Petrroll.Helpers;
 using PowerSwitcher.TrayApp.Configuration;
 using PowerSwitcher.TrayApp.Resources;
-using PowerSwitcher.TrayApp.Services;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using WF = System.Windows.Forms;
-
 
 namespace PowerSwitcher.TrayApp
 {
@@ -23,10 +21,16 @@ namespace PowerSwitcher.TrayApp
         IPowerManager pwrManager;
         ConfigurationInstance<PowerSwitcherSettings> configuration;
         #endregion
+
+        public static bool IsUseLightTheme
+        {
+            get { return Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize").GetValue("AppsUseLightTheme").ToString() == "1"; }
+        }
+
         public void UpdateTrayIcon()
         {
             string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
-            if (ThemeService.IsUseLightTheme)
+            if (IsUseLightTheme)
                 icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.ico";
             _trayIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri(icon)).Stream, WF.SystemInformation.SmallIconSize);
         }
@@ -49,7 +53,9 @@ namespace PowerSwitcher.TrayApp
             //Run automatic on-off-AC change at boot
             powerStatusChanged();
 
+            // Tray light/dark theme
             UpdateTrayIcon();
+            SystemEvents.UserPreferenceChanged += (s, e) => UpdateTrayIcon();
         }
 
         public void CreateAltMenu()

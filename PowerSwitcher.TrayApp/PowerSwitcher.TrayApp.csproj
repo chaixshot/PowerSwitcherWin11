@@ -119,7 +119,6 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Services\AccentColorService.cs" />
     <Compile Include="Services\TaskbarService.cs" />
-    <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\UserSystemPreferenceService.cs" />
     <Compile Include="TrayApp.cs" />
     <Compile Include="MainWindow.xaml.cs">
