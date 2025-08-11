@@ -70,12 +70,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_400E49DFD604501010C8FDA9D2E7FAB8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -101,6 +95,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7C199A53CDE479A449E200952C944EB7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_400E49DFD604501010C8FDA9D2E7FAB8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -153,6 +153,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -414,13 +422,13 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Power Switcher"
         "ProductCode" = "8:{F9022EB5-844F-4244-BE5F-AE48AC107AAA}"
-        "PackageCode" = "8:{9DF047C4-A423-4C72-8C1E-D4D94B7A2B66}"
+        "PackageCode" = "8:{39E3EC4F-3D4B-4EE1-BF2D-BBB2257ABB17}"
         "UpgradeCode" = "8:{62CF2790-249C-43C2-8FF4-530B075A3464}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0"
         "Manufacturer" = "8:Chaixshot"
         "ARPHELPTELEPHONE" = "8:"
@@ -431,7 +439,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Power plan switcher for Windows 11. Inspired by Windows Keyboard Layout."
         "ARPURLINFOABOUT" = "8:https://github.com/chaixshot"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -545,7 +553,7 @@
             "Target" = "8:_9B6E23E09EA545B88732725D409A247A"
             "Folder" = "8:_0F2AB87C9B314878B85340603BA6A310"
             "WorkingFolder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
-            "Icon" = "8:"
+            "Icon" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9B2E32F9D0874338BA65299606C7F4EC"
@@ -559,7 +567,7 @@
             "Target" = "8:_9B6E23E09EA545B88732725D409A247A"
             "Folder" = "8:_CC8B9A1D2824476797A6C3A38853FF56"
             "WorkingFolder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
-            "Icon" = "8:"
+            "Icon" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
             "Feature" = "8:"
             }
         }
