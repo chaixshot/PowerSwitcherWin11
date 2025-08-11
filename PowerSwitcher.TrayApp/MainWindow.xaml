@@ -34,6 +34,17 @@
         <viewModels:MainWindowViewModelDesign/>
     </d:Window.DataContext>
 
+    <Window.Resources>
+        <Style TargetType="{x:Type ui:ListViewItem}" BasedOn="{StaticResource ListViewItemStyle}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <x:Null/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+
     <StackPanel x:Name="MainPanel">
         <ui:TextBlock
             Text="Power Options"
@@ -66,7 +77,7 @@
             CornerRadius="0,0,0,0"
             Click="OpenPowerOption_Click"
             Background="Transparent"
-            Cursor="Hand" FontFamily="Segoe UI Semilight"
+            Cursor="Hand" FontFamily="Segoe UI"
             />
     </StackPanel>
 
