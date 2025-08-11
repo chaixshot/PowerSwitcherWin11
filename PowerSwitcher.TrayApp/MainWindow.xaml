@@ -1,4 +1,4 @@
-﻿<Window x:Class="PowerSwitcher.TrayApp.MainWindow"
+﻿<ui:FluentWindow x:Class="PowerSwitcher.TrayApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:PowerSwitcher.TrayApp"
         xmlns:viewModels="clr-namespace:PowerSwitcher.TrayApp.ViewModels"
         xmlns:ext="clr-namespace:PowerSwitcher.TrayApp.Extensions"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         Title="Power switcher" 
         Topmost="True"
         ShowInTaskbar="False"
-        AllowsTransparency="True"
         SnapsToDevicePixels="True"
         UseLayoutRounding="True"
         WindowStyle="None"
@@ -19,10 +19,12 @@
         Width="360"
         x:Name="SchemasWindow"
         Deactivated="Window_Deactivated"
-        PreviewKeyDown="Window_PreviewKeyDown" Background="Transparent" Foreground="Transparent"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Background="Transparent"
+        Foreground="Transparent"
         >
 
-    <Window.Resources>
+    <ui:FluentWindow.Resources>
         <SolidColorBrush x:Key="WindowForeground" Color="Black" />
         <SolidColorBrush x:Key="WindowBackground" Color="White" />
         <SolidColorBrush x:Key="SelectedItemBackground" Color="Red" />
@@ -81,11 +83,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+    </ui:FluentWindow.Resources>
 
-    <Window.DataContext>
+    <ui:FluentWindow.DataContext>
         <viewModels:MainWindowViewModel x:Name="ViewModel"/>
-    </Window.DataContext>
+    </ui:FluentWindow.DataContext>
 
     <d:Window.DataContext>
         <viewModels:MainWindowViewModelDesign/>
@@ -113,4 +115,4 @@
             </ListBox>
         </ScrollViewer>
     </Border>
-</Window>
+</ui:FluentWindow>
