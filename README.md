@@ -20,10 +20,10 @@ Feel free to buy me a tea at: [![Donate](https://img.shields.io/badge/Donate-Wis
 - [Andy Belsky's power-plan-switcher](https://github.com/andy722/power-plan-switcher) for some interop inspiration
 - [WPF-UI](https://github.com/lepoco/wpfui)
 
-![PowerPlanSwitcher Flyout](./ReadmeAssets/PowerSwicher_Flyout_Light.png)
+![PowerPlanSwitcher Flyout](./ReadmeAssets/PowerSwicher_Flyout_Light.jpg)
 
-![PowerPlanSwitcher Flyout 2](./ReadmeAssets/PowerSwicher_Flyout_Dark.png)
+![PowerPlanSwitcher Flyout 2](./ReadmeAssets/PowerSwicher_Flyout_Dark.jpg)
 
-![PowerPlanSwitcher Context Menu](./ReadmeAssets/PowerSwicher_ContextMenu_1.PNG)
+![PowerPlanSwitcher Context Menu](./ReadmeAssets/PowerSwicher_ContextMenu_1.jpg)
 
-![PowerPlanSwitcher Context Menu 2](./ReadmeAssets/PowerSwicher_ContextMenu_2.PNG)
+![PowerPlanSwitcher Context Menu 2](./ReadmeAssets/PowerSwicher_ContextMenu_2.jpg)
