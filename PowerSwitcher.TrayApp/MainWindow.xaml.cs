@@ -98,11 +98,6 @@ namespace PowerSwitcher.TrayApp
 
         #region ServicesUpdates
 
-        public static bool IsWindowTransparencyEnabled
-        {
-            get { return !SystemParameters.HighContrast && UserSystemPreferencesService.IsTransparencyEnabled; }
-        }
-
         private void UpdateWindowPosition()
         {
             MainPanel.UpdateLayout();
