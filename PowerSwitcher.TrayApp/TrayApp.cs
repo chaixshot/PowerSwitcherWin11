@@ -23,8 +23,6 @@ namespace PowerSwitcher.TrayApp
         IPowerManager pwrManager;
         ConfigurationInstance<PowerSwitcherSettings> configuration;
         #endregion
-        private static TrayApp instance;
-
         public void UpdateTrayIcon()
         {
             string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
