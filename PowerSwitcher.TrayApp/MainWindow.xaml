@@ -34,12 +34,12 @@
         <viewModels:MainWindowViewModelDesign/>
     </d:Window.DataContext>
 
-
     <StackPanel x:Name="MainPanel">
         <ui:TextBlock
             Text="Power Options"
             Margin="18,12,0,0"
-            FontSize="14" FontWeight="Medium"
+            FontSize="14"
+            FontFamily="Segoe UI Semibold"
             />
 
         <ui:ListView x:Name="ElementsList"
@@ -64,7 +64,9 @@
             HorizontalContentAlignment="Left"
             Padding="11,15,11,15"
             CornerRadius="0,0,0,0"
-            Click="OpenPowerOption_Click" VerticalAlignment="Stretch" Background="Transparent"
+            Click="OpenPowerOption_Click"
+            Background="Transparent"
+            Cursor="Hand" FontFamily="Segoe UI Semilight"
             />
     </StackPanel>
 
