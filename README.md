@@ -22,10 +22,10 @@ Feel free to buy me a beer at: [![Donate](https://img.shields.io/badge/Donate-Pa
 - [Andy Belsky's power-plan-switcher](https://github.com/andy722/power-plan-switcher) for some interop inspiration
 - [Mahdi Safsafi's ImmersiveColors](https://github.com/MahdiSafsafi/ImmersiveColors) for making working with undocumented accent colors easy :)
 
-![PowerPlanSwitcher Flyout](https://github.com/petrroll/PowerSwitcher/raw/master/ReadmeAssets/PowerSwicher_Flyout_1.PNG)
+![PowerPlanSwitcher Flyout](https://github.com/chaixshot/PowerSwitcherWin11/raw/master/ReadmeAssets/PowerSwicher_Flyout_1.PNG)
 
-![PowerPlanSwitcher Flyout 2](https://github.com/petrroll/PowerSwitcher/raw/master/ReadmeAssets/PowerSwicher_Flyout_2.PNG)
+![PowerPlanSwitcher Flyout 2](https://github.com/chaixshot/PowerSwitcherWin11/raw/master/ReadmeAssets/PowerSwicher_Flyout_2.PNG)
 
-![PowerPlanSwitcher Context Menu](https://github.com/petrroll/PowerSwitcher/raw/master/ReadmeAssets/PowerSwicher_ContextMenu_1.PNG)
+![PowerPlanSwitcher Context Menu](https://github.com/chaixshot/PowerSwitcherWin11/raw/master/ReadmeAssets/PowerSwicher_ContextMenu_1.PNG)
 
-![PowerPlanSwitcher Context Menu 2](https://github.com/petrroll/PowerSwitcher/raw/master/ReadmeAssets/PowerSwicher_ContextMenu_2.PNG)
+![PowerPlanSwitcher Context Menu 2](https://github.com/chaixshot/PowerSwitcherWin11/raw/master/ReadmeAssets/PowerSwicher_ContextMenu_2.PNG)

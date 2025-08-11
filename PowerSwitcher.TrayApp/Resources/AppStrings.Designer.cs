@@ -70,7 +70,7 @@ namespace PowerSwitcher.TrayApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://github.com/Petrroll/PowerSwitcher.
+        ///   Looks up a localized string similar to https://github.com/chaixshot/PowerSwitcherWin11.
         /// </summary>
         internal static string AboutAppURL {
             get {

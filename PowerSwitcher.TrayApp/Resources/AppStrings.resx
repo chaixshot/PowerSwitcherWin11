@@ -121,7 +121,7 @@
     <value>About</value>
   </data>
   <data name="AboutAppURL" xml:space="preserve">
-    <value>http://github.com/Petrroll/PowerSwitcher</value>
+    <value>https://github.com/chaixshot/PowerSwitcherWin11</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>PowerPlanSwitcher</value>
