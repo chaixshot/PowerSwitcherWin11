@@ -108,25 +108,26 @@ namespace PowerSwitcher.TrayApp
             MainPanel.UpdateLayout();
             MainPanel.Measure(new Size(double.PositiveInfinity, MaxHeight));
             Height = MainPanel.DesiredSize.Height;
+            SchemasWindow.Height = SchemasWindow.DesiredSize.Height;
 
             var taskbarState = TaskbarService.GetWinTaskbarState();
             switch (taskbarState.TaskbarPosition)
             {
                 case TaskbarPosition.Left:
-                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor());
-                    Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor()) - Height;
+                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - (Width * 1.5);
+                    Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor()) - SchemasWindow.Height;
                     break;
                 case TaskbarPosition.Right:
                     Left = (taskbarState.TaskbarSize.left / this.DpiWidthFactor()) - Width;
-                    Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor()) - Height;
+                    Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor()) - SchemasWindow.Height;
                     break;
                 case TaskbarPosition.Top:
-                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - Width;
+                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - (Width * 1.5);
                     Top = (taskbarState.TaskbarSize.bottom / this.DpiHeightFactor());
                     break;
                 case TaskbarPosition.Bottom:
-                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - (Width * 1.3);
-                    Top = (taskbarState.TaskbarSize.top / this.DpiHeightFactor()) - Height - 14;
+                    Left = (taskbarState.TaskbarSize.right / this.DpiWidthFactor()) - (Width * 1.5);
+                    Top = (taskbarState.TaskbarSize.top / this.DpiHeightFactor()) - SchemasWindow.Height - 14;
                     break;
             }
         }
