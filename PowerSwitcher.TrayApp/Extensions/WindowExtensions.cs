@@ -37,7 +37,7 @@ namespace PowerSwitcher.TrayApp.Extensions
                         hideAnimation.From = window.Top;
                         break;
                 }
-                hideAnimation.To = (taskbarPosition == TaskbarPosition.Top || taskbarPosition == TaskbarPosition.Left) ? hideAnimation.From - 30 : hideAnimation.From + 30;
+                hideAnimation.To = (taskbarPosition == TaskbarPosition.Top || taskbarPosition == TaskbarPosition.Left) ? hideAnimation.From - 1000 : hideAnimation.From + 1000;
                 hideAnimation.Completed += (s, e) =>
                 {
                     window.Visibility = Visibility.Hidden;
@@ -74,7 +74,7 @@ namespace PowerSwitcher.TrayApp.Extensions
                 window.Activate();
                 var showAnimation = new DoubleAnimation
                 {
-                    Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+                    Duration = new Duration(TimeSpan.FromSeconds(0.15)),
                     FillBehavior = FillBehavior.Stop,
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
