@@ -24,6 +24,6 @@ Feel free to buy me a tea at: [![Donate](https://img.shields.io/badge/Donate-Wis
 
 ![PowerPlanSwitcher Flyout 2](./ReadmeAssets/PowerSwicher_Flyout_Dark.png)
 
-![PowerPlanSwitcher Context Menu](./ReadmeAssets/PowerSwicher_ContextMenu_1.png)
+![PowerPlanSwitcher Context Menu](./ReadmeAssets/PowerSwicher_ContextMenu_1.PNG)
 
-![PowerPlanSwitcher Context Menu 2](./ReadmeAssets/PowerSwicher_ContextMenu_2.png)
+![PowerPlanSwitcher Context Menu 2](./ReadmeAssets/PowerSwicher_ContextMenu_2.PNG)
