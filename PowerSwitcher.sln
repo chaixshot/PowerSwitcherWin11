@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerSwitcher", "PowerSwitcher\PowerSwitcher.csproj", "{1D107D93-2902-4782-9C06-825925C3B39F}"
 EndProject
@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{E432A9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petrroll.Helpers", "Petrroll.Helpers\Petrroll.Helpers.csproj", "{C59CB1ED-956D-48F4-A78F-AED6BF3DD8AA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PowerSwitcher.Installer", "PowerSwitcher.Installer\PowerSwitcher.Installer.vdproj", "{C953D4A0-5796-80F2-11FF-9022B4D5317B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,9 @@ Global
 		{C59CB1ED-956D-48F4-A78F-AED6BF3DD8AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C59CB1ED-956D-48F4-A78F-AED6BF3DD8AA}.ReleaseAndPackage|Any CPU.ActiveCfg = Release|Any CPU
 		{C59CB1ED-956D-48F4-A78F-AED6BF3DD8AA}.ReleaseAndPackage|Any CPU.Build.0 = Release|Any CPU
+		{C953D4A0-5796-80F2-11FF-9022B4D5317B}.Debug|Any CPU.ActiveCfg = Debug
+		{C953D4A0-5796-80F2-11FF-9022B4D5317B}.Release|Any CPU.ActiveCfg = Release
+		{C953D4A0-5796-80F2-11FF-9022B4D5317B}.ReleaseAndPackage|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +67,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8E0616E9-3407-4127-AFEB-EDD34F9D66B5} = {5B372EF5-7A61-4E56-B86E-D4CC811A053A}
 		{E432A9F1-7F67-472E-B75D-BBBAAE8980E3} = {5B372EF5-7A61-4E56-B86E-D4CC811A053A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4998B88-8F42-43F5-A53B-BB6A89359B4F}
 	EndGlobalSection
 EndGlobal
