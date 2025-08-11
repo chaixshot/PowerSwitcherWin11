@@ -1,6 +1,7 @@
 ﻿using PowerSwitcher.TrayApp.Extensions;
 using PowerSwitcher.TrayApp.Services;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -104,9 +105,9 @@ namespace PowerSwitcher.TrayApp
 
         private void UpdateWindowPosition()
         {
-            ElementsList.UpdateLayout();
-            ElementsList.Measure(new Size(double.PositiveInfinity, MaxHeight));
-            Height = ElementsList.DesiredSize.Height;
+            MainPanel.UpdateLayout();
+            MainPanel.Measure(new Size(double.PositiveInfinity, MaxHeight));
+            Height = MainPanel.DesiredSize.Height;
 
             var taskbarState = TaskbarService.GetWinTaskbarState();
             switch (taskbarState.TaskbarPosition)
@@ -143,11 +144,9 @@ namespace PowerSwitcher.TrayApp
             }
         }
 
-        private void LayoutRoot_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void OpenPowerOption_Click(object sender, RoutedEventArgs e)
         {
-            ScrollViewer scv = (ScrollViewer)sender;
-            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
-            e.Handled = true;
+            Process.Start("powercfg.cpl");
         }
     }
 }

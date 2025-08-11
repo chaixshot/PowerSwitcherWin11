@@ -6,85 +6,23 @@
         xmlns:local="clr-namespace:PowerSwitcher.TrayApp"
         xmlns:viewModels="clr-namespace:PowerSwitcher.TrayApp.ViewModels"
         xmlns:ext="clr-namespace:PowerSwitcher.TrayApp.Extensions"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"         
+        x:Name="SchemasWindow"
+
         mc:Ignorable="d"
         Title="Power switcher" 
         Topmost="True"
         ShowInTaskbar="False"
         SnapsToDevicePixels="True"
-        UseLayoutRounding="True"
         WindowStyle="None"
 		ResizeMode="NoResize"
-        TextOptions.TextFormattingMode="Display" 
         Width="360"
-        x:Name="SchemasWindow"
         Deactivated="Window_Deactivated"
         PreviewKeyDown="Window_PreviewKeyDown"
+        WindowBackdropType="Mica"
         Background="Transparent"
-        Foreground="Transparent"
+        ExtendsContentIntoTitleBar="True"
         >
-
-    <ui:FluentWindow.Resources>
-        <SolidColorBrush x:Key="WindowForeground" Color="Black" />
-        <SolidColorBrush x:Key="WindowBackground" Color="White" />
-        <SolidColorBrush x:Key="SelectedItemBackground" Color="Red" />
-        <SolidColorBrush x:Key="MouseOverItemBackground" Color="Aqua" />
-        <SolidColorBrush x:Key="MouseOverSelectedItemBackground" Color="Pink" />
-
-        <Style TargetType="ListBox">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Border.Background" Value="Transparent"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource WindowForeground}"/>
-            <Setter Property="Padding" Value="4,2,4,2"/>
-        </Style>
-
-        <Style TargetType="{x:Type ListBoxItem}">
-            <Setter Property="FocusVisualStyle">
-                <Setter.Value>
-                    <x:Null/>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Padding" Value="12, 0, 0, 0"/>
-            <Setter Property="Margin" Value="0,0,0,4"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="border"
-                            CornerRadius="4">
-                            <Grid Background="{TemplateBinding Background}">
-                                <ContentPresenter Margin="{TemplateBinding Padding}" />
-                            </Grid>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MouseOverItemBackground}"/>
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedItemBackground}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="{x:Type Label}">
-            <Setter Property="Height" Value="42"/>
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Label}">
-                        <Border Background="Transparent">
-                            <TextBlock FontSize="16" TextWrapping="NoWrap" FontFamily="Segoe UI" VerticalAlignment="Center" Text="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Label}}}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </ui:FluentWindow.Resources>
-
     <ui:FluentWindow.DataContext>
         <viewModels:MainWindowViewModel x:Name="ViewModel"/>
     </ui:FluentWindow.DataContext>
@@ -93,26 +31,38 @@
         <viewModels:MainWindowViewModelDesign/>
     </d:Window.DataContext>
 
+    <Grid x:Name="MainPanel">
+        <StackPanel>
+            <ui:TextBlock
+                Text="Power Options"
+                Margin="18,12,0,0"
+                FontSize="14" FontWeight="Medium"
+                />
 
-    <Border
-        CornerRadius="8"
-        Background="{DynamicResource WindowBackground}"
-        >
-        <ScrollViewer x:Name="LayoutRoot"
-            VerticalScrollBarVisibility="Auto"
-            CanContentScroll="True"
-            PanningMode="VerticalOnly"
-            Focusable="False"
-            Margin="0"
-            PreviewMouseWheel="LayoutRoot_PreviewMouseWheel"
-            >
-            <ListBox x:Name="ElementsList" KeyboardNavigation.TabNavigation="Cycle" Focusable="False" SelectionMode="Single" ItemsSource="{Binding Schemas}" SelectedItem="{Binding ActiveSchema}" IsSynchronizedWithCurrentItem="False" BorderBrush="#00000000" >
-                <ListBox.ItemTemplate>
+            <ui:ListView x:Name="ElementsList"
+                KeyboardNavigation.TabNavigation="Cycle"
+                Focusable="False"
+                SelectionMode="Single"
+                ItemsSource="{Binding Schemas}"
+                SelectedItem="{Binding ActiveSchema}"
+                IsSynchronizedWithCurrentItem="False"
+                Margin="5,12,5,12"
+                >
+                <ui:ListView.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Name}" Tag="{Binding Guid}" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+                        <TextBlock Margin="8,10,8,10" Text="{Binding Name}" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
-    </Border>
+                </ui:ListView.ItemTemplate>
+            </ui:ListView>
+
+            <ui:Button x:Name="OpenPowerOption"
+                Content="Open power options"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Padding="11,15,11,15"
+                CornerRadius="0,0,0,0"
+                Click="OpenPowerOption_Click"
+                />
+        </StackPanel>
+    </Grid>
 </ui:FluentWindow>
