@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 using WF = System.Windows.Forms;
 
@@ -20,18 +21,15 @@ namespace PowerSwitcher.TrayApp
         public event Action ShowFlyout;
         IPowerManager pwrManager;
         ConfigurationInstance<PowerSwitcherSettings> configuration;
+        [DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
+        public static extern bool ShouldSystemUseDarkMode();
         #endregion
-
-        public static bool IsUseLightTheme
-        {
-            get { return Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize").GetValue("AppsUseLightTheme").ToString() == "1"; }
-        }
 
         public void UpdateTrayIcon()
         {
-            string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
-            if (IsUseLightTheme)
-                icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.ico";
+            string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.ico";
+            if (ShouldSystemUseDarkMode())
+                icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
             _trayIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri(icon)).Stream, WF.SystemInformation.SmallIconSize);
         }
 
