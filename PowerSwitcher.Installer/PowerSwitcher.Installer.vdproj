@@ -175,6 +175,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_521DE4A0C7C444F0A096DCB18D4672D7"
+            {
+            "Name" = "8:Primary output from PowerSwitcher.TrayApp (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9B6E23E09EA545B88732725D409A247A"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_0DBE0653_C1F2_4537_94B9_941092A77AD8"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_62B035E3C9BE4783A30170463C04E043"
+            {
+            "Name" = "8:Primary output from PowerSwitcher.TrayApp (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9B6E23E09EA545B88732725D409A247A"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_3A97DA5D_4986_4553_B783_C5445870F99F"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_AF3E24F7ADD84F38AC0C3099590EBE06"
+            {
+            "Name" = "8:Primary output from PowerSwitcher.TrayApp (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9B6E23E09EA545B88732725D409A247A"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_E443FF98_06B7_435F_818F_133087506528"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_ED3B7F124B7B46D6BE582C90DB00D570"
+            {
+            "Name" = "8:Primary output from PowerSwitcher.TrayApp (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9B6E23E09EA545B88732725D409A247A"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_3F8C02DA_148D_49E0_A024_47C6D7689CB5"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -430,7 +486,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Power Switcher"
         "ProductCode" = "8:{F9022EB5-844F-4244-BE5F-AE48AC107AAA}"
-        "PackageCode" = "8:{5BEEC9C8-0759-4B31-AE93-F79B98B76A5D}"
+        "PackageCode" = "8:{03EAC7FB-F18E-4B4A-A4D7-550E3A3EED5B}"
         "UpgradeCode" = "8:{62CF2790-249C-43C2-8FF4-530B075A3464}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
