@@ -21,26 +21,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3F548A49CD46A9080A74D310042C20DE"
+        "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_400E49DFD604501010C8FDA9D2E7FAB8"
         "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6F0CBAE7DCF0E33DF07D79A7D06E70B5"
+        "MsmKey" = "8:_93E9F30F888A46F6D9A40447B2C8EBDC"
         "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7C199A53CDE479A449E200952C944EB7"
-        "OwnerKey" = "8:_6F0CBAE7DCF0E33DF07D79A7D06E70B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7C199A53CDE479A449E200952C944EB7"
-        "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
+        "MsmKey" = "8:_93E9F30F888A46F6D9A40447B2C8EBDC"
+        "OwnerKey" = "8:_3F548A49CD46A9080A74D310042C20DE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,50 +51,50 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B93BD04DCF4046323E729622276D5848"
+        "MsmKey" = "8:_B1054A7C2135EE3C9BD61D1F4EE3D286"
         "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B93BD04DCF4046323E729622276D5848"
-        "OwnerKey" = "8:_C46088D9952AC8BCCB6A19D44119A95D"
+        "MsmKey" = "8:_F03D321B0FC708F4A7868136B8CF4276"
+        "OwnerKey" = "8:_B1054A7C2135EE3C9BD61D1F4EE3D286"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C46088D9952AC8BCCB6A19D44119A95D"
-        "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F03D321B0FC708F4A7868136B8CF4276"
         "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C46088D9952AC8BCCB6A19D44119A95D"
+        "OwnerKey" = "8:_9B6E23E09EA545B88732725D409A247A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B93BD04DCF4046323E729622276D5848"
+        "OwnerKey" = "8:_3F548A49CD46A9080A74D310042C20DE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6F0CBAE7DCF0E33DF07D79A7D06E70B5"
+        "OwnerKey" = "8:_93E9F30F888A46F6D9A40447B2C8EBDC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7C199A53CDE479A449E200952C944EB7"
+        "OwnerKey" = "8:_B1054A7C2135EE3C9BD61D1F4EE3D286"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F03D321B0FC708F4A7868136B8CF4276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,6 +160,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -210,6 +218,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3F548A49CD46A9080A74D310042C20DE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:PowerSwitcher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3F548A49CD46A9080A74D310042C20DE"
+                    {
+                    "Name" = "8:PowerSwitcher.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:PowerSwitcher.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_400E49DFD604501010C8FDA9D2E7FAB8"
             {
             "AssemblyRegister" = "3:1"
@@ -241,76 +280,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6F0CBAE7DCF0E33DF07D79A7D06E70B5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Wpf.Ui, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_6F0CBAE7DCF0E33DF07D79A7D06E70B5"
-                    {
-                    "Name" = "8:Wpf.Ui.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Wpf.Ui.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7C199A53CDE479A449E200952C944EB7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Wpf.Ui.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7C199A53CDE479A449E200952C944EB7"
-                    {
-                    "Name" = "8:Wpf.Ui.Abstractions.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Wpf.Ui.Abstractions.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B93BD04DCF4046323E729622276D5848"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_93E9F30F888A46F6D9A40447B2C8EBDC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Petrroll.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B93BD04DCF4046323E729622276D5848"
+                    "_93E9F30F888A46F6D9A40447B2C8EBDC"
                     {
                     "Name" = "8:Petrroll.Helpers.dll"
                     "Attributes" = "3:512"
@@ -334,20 +311,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C46088D9952AC8BCCB6A19D44119A95D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B1054A7C2135EE3C9BD61D1F4EE3D286"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:PowerSwitcher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Wpf.Ui, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C46088D9952AC8BCCB6A19D44119A95D"
+                    "_B1054A7C2135EE3C9BD61D1F4EE3D286"
                     {
-                    "Name" = "8:PowerSwitcher.dll"
+                    "Name" = "8:Wpf.Ui.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:PowerSwitcher.dll"
+            "SourcePath" = "8:Wpf.Ui.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F03D321B0FC708F4A7868136B8CF4276"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Wpf.Ui.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F03D321B0FC708F4A7868136B8CF4276"
+                    {
+                    "Name" = "8:Wpf.Ui.Abstractions.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Wpf.Ui.Abstractions.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
@@ -374,7 +382,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_0F2AB87C9B314878B85340603BA6A310"
             {
             "Name" = "8:#1928"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:StartupFolder"
@@ -422,7 +430,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Power Switcher"
         "ProductCode" = "8:{F9022EB5-844F-4244-BE5F-AE48AC107AAA}"
-        "PackageCode" = "8:{39E3EC4F-3D4B-4EE1-BF2D-BBB2257ABB17}"
+        "PackageCode" = "8:{5BEEC9C8-0759-4B31-AE93-F79B98B76A5D}"
         "UpgradeCode" = "8:{62CF2790-249C-43C2-8FF4-530B075A3464}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -542,23 +550,9 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4300C1E155D34CF88B7A042DB758CBC6"
-            {
-            "Name" = "8:Power Shwitcher"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_9B6E23E09EA545B88732725D409A247A"
-            "Folder" = "8:_0F2AB87C9B314878B85340603BA6A310"
-            "WorkingFolder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
-            "Icon" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
-            "Feature" = "8:"
-            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9B2E32F9D0874338BA65299606C7F4EC"
             {
-            "Name" = "8:PowerSwitcher"
+            "Name" = "8:Power Switcher"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -566,6 +560,20 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_9B6E23E09EA545B88732725D409A247A"
             "Folder" = "8:_CC8B9A1D2824476797A6C3A38853FF56"
+            "WorkingFolder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
+            "Icon" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C345D2A8CDA4489CAE47B641D55A439D"
+            {
+            "Name" = "8:Power Switcher"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_9B6E23E09EA545B88732725D409A247A"
+            "Folder" = "8:_0F2AB87C9B314878B85340603BA6A310"
             "WorkingFolder" = "8:_D0B16D0191BD46B38760618B79C4C7B0"
             "Icon" = "8:_3EF3669CA1DF4898918B756E8FB4CAE0"
             "Feature" = "8:"
