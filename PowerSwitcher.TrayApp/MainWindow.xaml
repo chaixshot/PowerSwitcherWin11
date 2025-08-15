@@ -44,7 +44,6 @@
         </Style>
     </Window.Resources>
     
-
     <StackPanel x:Name="MainPanel">
         <ui:TextBlock
             Text="Power Options"
@@ -76,7 +75,6 @@
             Padding="11,15,11,15"
             CornerRadius="0,0,0,0"
             Click="OpenPowerOption_Click"
-            Background="Transparent"
             Cursor="Hand" FontFamily="Segoe UI"
             />
     </StackPanel>
