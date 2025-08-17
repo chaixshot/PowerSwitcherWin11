@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Power Switcher"
-#define MyAppVersion "1.0"
+#define MyAppVersion "0.4.5"
 #define MyAppPublisher "H@mer"
 #define MyAppURL "https://github.com/chaixshot/PowerSwitcherWin11"
 #define MyAppExeName "PowerSwitcher.TrayApp.exe"
