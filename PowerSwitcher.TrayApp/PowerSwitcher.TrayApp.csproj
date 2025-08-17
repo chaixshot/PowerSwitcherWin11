@@ -124,12 +124,6 @@
     <Compile Include="Extensions\InvertableVisibilityConvertor.cs" />
     <Compile Include="Extensions\OpacityConvertor.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="Installer1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Installer1.Designer.cs">
-      <DependentUpon>Installer1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources\AppStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
