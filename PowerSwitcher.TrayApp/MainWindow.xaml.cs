@@ -3,7 +3,6 @@ using PowerSwitcher.TrayApp.Services;
 using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -34,11 +33,12 @@ namespace PowerSwitcher.TrayApp
 
             // WPF-UI theme
             ApplicationThemeManager.ApplySystemTheme();
-            Wpf.Ui.Appearance.SystemThemeWatcher.Watch(
+            SystemThemeWatcher.Watch(
                 this,                                    // Window class
-                Wpf.Ui.Controls.WindowBackdropType.Mica, // Background type
+                WindowBackdropType.Mica, // Background type
                 true                                     // Whether to change accents automatically
             );
+
         }
 
         private void createAndHideWindow()
