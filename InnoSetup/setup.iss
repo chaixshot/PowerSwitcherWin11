@@ -36,11 +36,22 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\github\PowerSwitcherWin11\Build\Debug\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\github\PowerSwitcherWin11\Build\Debug\Petrroll.Helpers.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\github\PowerSwitcherWin11\Build\Debug\PowerSwitcher.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\github\PowerSwitcherWin11\Build\Debug\Wpf.Ui.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\github\PowerSwitcherWin11\Build\Debug\Wpf.Ui.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Petrroll.Helpers.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Petrroll.Helpers.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.TrayApp.application"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.TrayApp.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.TrayApp.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.TrayApp.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\PowerSwitcher.TrayApp.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.Abstractions.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.Abstractions.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\github\PowerSwitcherWin11\Build\Release\Wpf.Ui.xml"; DestDir: "{app}"; Flags: ignoreversion
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
