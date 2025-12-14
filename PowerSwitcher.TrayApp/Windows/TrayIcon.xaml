@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="PowerSwitcher.TrayApp.Windows.TrayIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PowerSwitcher.TrayApp.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tray="http://schemas.lepo.co/wpfui/2022/xaml/tray"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="TrayIcon"
+    Width="0"
+    Height="0"
+    Background="Transparent"
+    IsHitTestVisible="False"
+    Left="-50"
+    Opacity="0"
+    RenderOptions.ClearTypeHint="Enabled"
+    ShowInTaskbar="True"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="ClearType"
+    Top="-50"
+    WindowStyle="ToolWindow"
+    mc:Ignorable="d">
+
+    <tray:NotifyIcon
+        x:Name="NotifyIcon"
+        FocusOnLeftClick="False"
+        LeftClick="Tray_LeftClick"
+        TooltipText="ScreenLookup">
+        <tray:NotifyIcon.Menu>
+            <ContextMenu>
+                <wpfui:NavigationViewItemSeparator />
+
+                <wpfui:MenuItem
+                    x:Name="SettingsMenuItem"
+                    Header="Settings"
+                    StaysOpenOnClick="True">
+                    <wpfui:MenuItem.Icon>
+                        <Controls:SymbolIcon Symbol="Settings24" />
+                    </wpfui:MenuItem.Icon>
+                </wpfui:MenuItem>
+
+                <wpfui:MenuItem Click="TrayItemAbout_Click" Header="About">
+                    <wpfui:MenuItem.Icon>
+                        <Controls:SymbolIcon Symbol="Info24" />
+                    </wpfui:MenuItem.Icon>
+                </wpfui:MenuItem>
+
+                <wpfui:MenuItem Click="TrayItemExit_Click" Header="Close">
+                    <wpfui:MenuItem.Icon>
+                        <Controls:SymbolIcon Symbol="Dismiss24" />
+                    </wpfui:MenuItem.Icon>
+                </wpfui:MenuItem>
+            </ContextMenu>
+        </tray:NotifyIcon.Menu>
+    </tray:NotifyIcon>
+</Window>

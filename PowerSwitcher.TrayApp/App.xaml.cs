@@ -1,6 +1,7 @@
 ﻿using Petrroll.Helpers;
 using PowerSwitcher.TrayApp.Configuration;
 using PowerSwitcher.TrayApp.Services;
+using PowerSwitcher.TrayApp.Windows;
 using System;
 using System.Globalization;
 using System.IO;
@@ -19,7 +20,7 @@ namespace PowerSwitcher.TrayApp
         public bool HotKeyFailed { get; private set; }
 
         public IPowerManager PowerManager { get; private set; }
-        public TrayApp TrayApp { get; private set; }
+        public TrayIcon TrayIcon { get; private set; }
         public ConfigurationInstance<PowerSwitcherSettings> Configuration { get; private set; }
 
         private Mutex _mMutex;
@@ -28,7 +29,7 @@ namespace PowerSwitcher.TrayApp
             if (!tryToCreateMutex()) return;
 
             var configurationManager = new ConfigurationManagerXML<PowerSwitcherSettings>(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Petrroll", "PowerSwitcher", "PowerSwitcherSettings.xml"
                 ));
 
@@ -40,18 +41,20 @@ namespace PowerSwitcher.TrayApp
 
             PowerManager = new PowerManager();
             MainWindow = new MainWindow();
-            TrayApp = new TrayApp(PowerManager, Configuration); //Has to be last because it hooks to MainWindow
+
+            TrayIcon = new TrayIcon(PowerManager, Configuration);
+            TrayIcon.Show();
 
             Configuration.Data.PropertyChanged += Configuration_PropertyChanged;
             if (Configuration.Data.ShowOnShortcutSwitch) { registerHotkeyFromConfiguration(); }
 
-            TrayApp.CreateAltMenu();
+            TrayIcon.CreateAltMenu();
         }
 
         private void migrateSettings()
         {
             //Migration of shortcut because Creators update uses WinShift + S for screenshots
-            if(Configuration.Data.ShowOnShortcutKey == System.Windows.Input.Key.S &&
+            if (Configuration.Data.ShowOnShortcutKey == System.Windows.Input.Key.S &&
                 Configuration.Data.ShowOnShortcutKeyModifier == (KeyModifier.Shift | KeyModifier.Win))
             {
                 Configuration.Data.ShowOnShortcutKey = System.Windows.Input.Key.L;
@@ -61,7 +64,7 @@ namespace PowerSwitcher.TrayApp
 
         private void Configuration_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(PowerSwitcherSettings.ShowOnShortcutSwitch))
+            if (e.PropertyName == nameof(PowerSwitcherSettings.ShowOnShortcutSwitch))
             {
                 if (Configuration.Data.ShowOnShortcutSwitch) { registerHotkeyFromConfiguration(); }
                 else { unregisterHotkeyFromConfiguration(); }
@@ -78,7 +81,7 @@ namespace PowerSwitcher.TrayApp
             var newHotKey = new HotKey(Configuration.Data.ShowOnShortcutKey, Configuration.Data.ShowOnShortcutKeyModifier);
 
             bool success = HotKeyManager.Register(newHotKey);
-            if(!success) { HotKeyFailed = true; return false; }
+            if (!success) { HotKeyFailed = true; return false; }
             newHotKey.HotKeyFired += (this.MainWindow as MainWindow).ToggleWindowVisibility;
 
             return true;
