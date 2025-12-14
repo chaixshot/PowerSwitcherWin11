@@ -1,13 +1,14 @@
-﻿<ui:FluentWindow
+﻿<Controls:FluentWindow
     x:Class="PowerSwitcher.TrayApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ext="clr-namespace:PowerSwitcher.TrayApp.Extensions"
     xmlns:local="clr-namespace:PowerSwitcher.TrayApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:viewModels="clr-namespace:PowerSwitcher.TrayApp.ViewModels"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     x:Name="SchemasWindow"
     Title="Power switcher"
     Width="360"
@@ -27,16 +28,17 @@
     WindowBackdropType="Mica"
     WindowStyle="None"
     mc:Ignorable="d">
-    <ui:FluentWindow.DataContext>
+
+    <Controls:FluentWindow.DataContext>
         <viewModels:MainWindowViewModel x:Name="ViewModel" />
-    </ui:FluentWindow.DataContext>
+    </Controls:FluentWindow.DataContext>
 
     <d:Window.DataContext>
         <viewModels:MainWindowViewModelDesign />
     </d:Window.DataContext>
 
     <Window.Resources>
-        <Style BasedOn="{StaticResource ListViewItemStyle}" TargetType="{x:Type ui:ListViewItem}">
+        <Style BasedOn="{StaticResource ListViewItemStyle}" TargetType="{x:Type wpfui:ListViewItem}">
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
                     <x:Null />
@@ -46,42 +48,109 @@
     </Window.Resources>
 
     <StackPanel x:Name="MainPanel">
-        <ui:TextBlock
-            Margin="18,12,0,0"
-            FontFamily="Segoe UI Semibold"
-            FontSize="14"
-            Text="Power Options" />
+        <StackPanel Background="{wpfui:ThemeResource CardBackgroundFillColorDefaultBrush}">
+            <StackPanel Margin="18,12,0,0" Orientation="Horizontal">
+                <Controls:TextBlock
+                    FontSize="14"
+                    FontWeight="DemiBold"
+                    Text="Power Options"
+                    TextAlignment="Center" />
+                <StackPanel
+                    x:Name="hotkeys"
+                    Margin="8,0,0,0"
+                    Orientation="Horizontal">
+                    <Border
+                        Width="18"
+                        Height="18"
+                        BorderBrush="{wpfui:ThemeResource ControlElevationBorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="2">
+                        <Controls:SymbolIcon
+                            Filled="True"
+                            FontSize="12"
+                            Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                            Symbol="TableSimple48" />
+                    </Border>
 
-        <ui:ListView
-            x:Name="ElementsList"
-            Margin="5,12,5,0"
-            Focusable="False"
-            IsSynchronizedWithCurrentItem="False"
-            ItemsSource="{Binding Schemas}"
-            KeyboardNavigation.TabNavigation="Cycle"
-            SelectedItem="{Binding ActiveSchema}"
-            SelectionMode="Single">
-            <ui:ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Margin="8,10,8,10"
-                        MouseLeftButtonDown="Label_MouseLeftButtonDown"
-                        Text="{Binding Name}" />
-                </DataTemplate>
-            </ui:ListView.ItemTemplate>
-        </ui:ListView>
+                    <Controls:TextBlock
+                        Height="16"
+                        Margin="1,0,1,0"
+                        FontSize="10"
+                        Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                        Text="+" />
 
-        <ui:Button
+                    <Border
+                        Width="30"
+                        Height="18"
+                        BorderBrush="{wpfui:ThemeResource ControlElevationBorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="2">
+                        <Controls:TextBlock
+                            FontSize="10"
+                            FontWeight="DemiBold"
+                            Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                            Text="Shift"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <Controls:TextBlock
+                        Height="16"
+                        Margin="1,0,1,0"
+                        FontSize="10"
+                        Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                        Text="+" />
+
+                    <Border
+                        Width="18"
+                        Height="18"
+                        BorderBrush="{wpfui:ThemeResource ControlElevationBorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="2">
+                        <Controls:TextBlock
+                            FontSize="10"
+                            FontWeight="DemiBold"
+                            Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                            Text="L"
+                            TextAlignment="Center" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <Controls:ListView
+                x:Name="ElementsList"
+                Margin="5,12,5,0"
+                Focusable="False"
+                IsSynchronizedWithCurrentItem="False"
+                ItemsSource="{Binding Schemas}"
+                KeyboardNavigation.TabNavigation="Cycle"
+                SelectedItem="{Binding ActiveSchema}"
+                SelectionMode="Single">
+                <Controls:ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            Margin="8,10,8,10"
+                            MouseLeftButtonDown="Label_MouseLeftButtonDown"
+                            Text="{Binding Name}" />
+                    </DataTemplate>
+                </Controls:ListView.ItemTemplate>
+            </Controls:ListView>
+        </StackPanel>
+
+        <Controls:Button
             x:Name="OpenPowerOption"
             Padding="11,15,11,15"
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Left"
+            Background="Transparent"
             Click="OpenPowerOption_Click"
-            Content="Open power options"
             CornerRadius="0,0,0,0"
-            Cursor="Hand"
-            FontFamily="Segoe UI"
-            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}" />
+            Cursor="Hand">
+            <Controls:Button.Content>
+                <Controls:TextBlock
+                    FontSize="12"
+                    Foreground="{wpfui:ThemeResource TextPlaceholderColorBrush}"
+                    Text="Open power options" />
+            </Controls:Button.Content>
+        </Controls:Button>
     </StackPanel>
 
-</ui:FluentWindow>
+</Controls:FluentWindow>
