@@ -59,6 +59,14 @@ namespace PowerSwitcher.TrayApp
             }
             else
             {
+                if (Application.Current is App currApp)
+                {
+                    if (currApp.Configuration.Data.ShowOnShortcutSwitch)
+                        hotkeyButton.Visibility = Visibility.Visible;
+                    else
+                        hotkeyButton.Visibility = Visibility.Collapsed;
+                }
+
                 ViewModel.Refresh();
                 UpdateWindowPosition();
                 this.ShowWithAnimation();

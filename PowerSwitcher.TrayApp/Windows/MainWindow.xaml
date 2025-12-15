@@ -49,14 +49,16 @@
 
     <StackPanel x:Name="MainPanel">
         <StackPanel Background="{wpfui:ThemeResource CardBackgroundFillColorDefaultBrush}">
-            <StackPanel Margin="18,12,0,0" Orientation="Horizontal">
+            <StackPanel
+                Margin="18,12,0,0"
+                Orientation="Horizontal">
                 <Controls:TextBlock
                     FontSize="14"
                     FontWeight="DemiBold"
                     Text="Power Options"
                     TextAlignment="Center" />
                 <StackPanel
-                    x:Name="hotkeys"
+                    x:Name="hotkeyButton"
                     Margin="8,0,0,0"
                     Orientation="Horizontal">
                     <Border

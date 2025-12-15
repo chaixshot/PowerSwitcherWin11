@@ -19,7 +19,7 @@ namespace PowerSwitcher.TrayApp.Configuration
         public Key ShowOnShortcutKey { get; set; } = Key.L;
         public KeyModifier ShowOnShortcutKeyModifier { get; set; } = KeyModifier.Shift | KeyModifier.Win;
 
-        bool showOnShortcutSwitch = false;
+        bool showOnShortcutSwitch = true;
         public bool ShowOnShortcutSwitch { get { return showOnShortcutSwitch; } set { showOnShortcutSwitch = value; RaisePropertyChangedEvent(nameof(ShowOnShortcutSwitch)); } }
 
         bool showOnlyDefaultSchemas = false;
