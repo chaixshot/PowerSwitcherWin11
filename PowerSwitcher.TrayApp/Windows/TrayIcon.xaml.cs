@@ -23,6 +23,9 @@ namespace PowerSwitcher.TrayApp.Windows
         [DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
         public static extern bool ShouldSystemUseDarkMode();
 
+        MenuItem settingsOffACItem;
+        MenuItem settingsOnAC;
+
         public TrayIcon(IPowerManager powerManager, ConfigurationInstance<PowerSwitcherSettings> config)
         {
             InitializeComponent();
@@ -58,11 +61,15 @@ namespace PowerSwitcher.TrayApp.Windows
         {
             NotifyIcon.RightClick += ContextMenu_Popup;
 
-            MenuItem settingsOffACItem = new MenuItem() { Header = AppStrings.SchemaToSwitchOffAc };
-            SettingsMenuItem.Items.Insert(0, settingsOffACItem);
+            //-----------------------
+            var separator = new NavigationViewItemSeparator();
+            NotifyIcon.Menu.Items.Add(separator);
 
-            MenuItem settingsOnAC = new MenuItem() { Header = AppStrings.SchemaToSwitchOnAc };
-            SettingsMenuItem.Items.Insert(1, settingsOnAC);
+            settingsOffACItem = new MenuItem() { Header = AppStrings.SchemaToSwitchOffAc };
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, settingsOffACItem);
+
+            settingsOnAC = new MenuItem() { Header = AppStrings.SchemaToSwitchOnAc };
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, settingsOnAC);
 
             var AutomaticOnOffACSwitch = new MenuItem()
             {
@@ -70,7 +77,7 @@ namespace PowerSwitcher.TrayApp.Windows
                 Icon = new SymbolIcon(configuration.Data.AutomaticOnACSwitch ? SymbolRegular.Checkmark24 : SymbolRegular.Empty),
             };
             AutomaticOnOffACSwitch.Click += AutomaticSwitchItem_Click;
-            SettingsMenuItem.Items.Add(AutomaticOnOffACSwitch);
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, AutomaticOnOffACSwitch);
 
             var HideFlyoutAfterSchemaChangeSwitch = new MenuItem()
             {
@@ -78,7 +85,7 @@ namespace PowerSwitcher.TrayApp.Windows
                 Icon = new SymbolIcon(configuration.Data.AutomaticFlyoutHideAfterClick ? SymbolRegular.Checkmark24 : SymbolRegular.Empty),
             };
             HideFlyoutAfterSchemaChangeSwitch.Click += AutomaticHideItem_Click;
-            SettingsMenuItem.Items.Add(HideFlyoutAfterSchemaChangeSwitch);
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, HideFlyoutAfterSchemaChangeSwitch);
 
             var ShowOnlyDefaultSchemas = new MenuItem()
             {
@@ -86,7 +93,7 @@ namespace PowerSwitcher.TrayApp.Windows
                 Icon = new SymbolIcon(configuration.Data.ShowOnlyDefaultSchemas ? SymbolRegular.Checkmark24 : SymbolRegular.Empty),
             };
             ShowOnlyDefaultSchemas.Click += OnlyDefaultSchemas_Click;
-            SettingsMenuItem.Items.Add(ShowOnlyDefaultSchemas);
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, ShowOnlyDefaultSchemas);
 
             var ToggleOnShowrtcutSwitch = new MenuItem()
             {
@@ -95,7 +102,28 @@ namespace PowerSwitcher.TrayApp.Windows
                 Icon = new SymbolIcon(configuration.Data.ShowOnShortcutSwitch ? SymbolRegular.Checkmark24 : SymbolRegular.Empty),
             };
             ToggleOnShowrtcutSwitch.Click += EnableShortcutsToggleItem_Click;
-            SettingsMenuItem.Items.Add(ToggleOnShowrtcutSwitch);
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, ToggleOnShowrtcutSwitch);
+
+            //-----------------------
+
+            separator = new NavigationViewItemSeparator();
+            NotifyIcon.Menu.Items.Add(separator);
+
+            var About = new MenuItem()
+            {
+                Header = "About",
+                Icon = new SymbolIcon(SymbolRegular.Info24),
+            };
+            About.Click += TrayAbout_Click;
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, About);
+
+            var Exit = new MenuItem()
+            {
+                Header = "Exit",
+                Icon = new SymbolIcon(SymbolRegular.Dismiss24),
+            };
+            Exit.Click += TrayExit_Click;
+            NotifyIcon.Menu.Items.Insert(NotifyIcon.Menu.Items.Count, Exit);
         }
 
         #region ContextMenuItemRelatedStuff
@@ -124,8 +152,7 @@ namespace PowerSwitcher.TrayApp.Windows
                 (s, ea) => setPowerSchemaAsOffAC(powerSchema),
                 (powerSchema.Guid == configuration.Data.AutomaticPlanGuidOffAC)
                 );
-            MenuItem settingsOffAC = SettingsMenuItem.Items.GetItemAt(0) as MenuItem;
-            settingsOffAC.Items.Add(newItemSettingsOffAC);
+            settingsOffACItem.Items.Add(newItemSettingsOffAC);
 
             //ItemSettingsOnAC
             var newItemSettingsOnAC = getNewPowerSchemaItem(
@@ -133,8 +160,7 @@ namespace PowerSwitcher.TrayApp.Windows
                 (s, ea) => setPowerSchemaAsOnAC(powerSchema),
                 (powerSchema.Guid == configuration.Data.AutomaticPlanGuidOnAC)
                 );
-            MenuItem settingsOnACItem = SettingsMenuItem.Items.GetItemAt(1) as MenuItem;
-            settingsOnACItem.Items.Add(newItemSettingsOnAC);
+            settingsOnAC.Items.Add(newItemSettingsOnAC);
         }
 
         private void clearPowerSchemasInTray()
@@ -150,10 +176,8 @@ namespace PowerSwitcher.TrayApp.Windows
                     }
             }
 
-            MenuItem settingsOffAC = SettingsMenuItem.Items.GetItemAt(0) as MenuItem;
-            MenuItem settingsOnACItem = SettingsMenuItem.Items.GetItemAt(1) as MenuItem;
-            settingsOffAC.Items.Clear();
-            settingsOnACItem.Items.Clear();
+            settingsOffACItem.Items.Clear();
+            settingsOnAC.Items.Clear();
         }
 
         private MenuItem getNewPowerSchemaItem(IPowerSchema powerSchema, RoutedEventHandler clickedHandler, bool isChecked)
@@ -276,12 +300,12 @@ namespace PowerSwitcher.TrayApp.Windows
             ShowFlyout?.Invoke();
         }
 
-        private void TrayItemAbout_Click(object sender, RoutedEventArgs e)
+        private void TrayAbout_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(AppStrings.AboutAppURL);
         }
 
-        private void TrayItemExit_Click(object sender, RoutedEventArgs e)
+        private void TrayExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             App.Current.Shutdown();

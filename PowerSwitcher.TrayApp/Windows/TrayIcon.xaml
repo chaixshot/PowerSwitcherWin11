@@ -29,30 +29,7 @@
         LeftClick="Tray_LeftClick"
         TooltipText="ScreenLookup">
         <tray:NotifyIcon.Menu>
-            <ContextMenu>
-                <wpfui:NavigationViewItemSeparator />
-
-                <wpfui:MenuItem
-                    x:Name="SettingsMenuItem"
-                    Header="Settings"
-                    StaysOpenOnClick="True">
-                    <wpfui:MenuItem.Icon>
-                        <Controls:SymbolIcon Symbol="Settings24" />
-                    </wpfui:MenuItem.Icon>
-                </wpfui:MenuItem>
-
-                <wpfui:MenuItem Click="TrayItemAbout_Click" Header="About">
-                    <wpfui:MenuItem.Icon>
-                        <Controls:SymbolIcon Symbol="Info24" />
-                    </wpfui:MenuItem.Icon>
-                </wpfui:MenuItem>
-
-                <wpfui:MenuItem Click="TrayItemExit_Click" Header="Close">
-                    <wpfui:MenuItem.Icon>
-                        <Controls:SymbolIcon Symbol="Dismiss24" />
-                    </wpfui:MenuItem.Icon>
-                </wpfui:MenuItem>
-            </ContextMenu>
+            <ContextMenu />
         </tray:NotifyIcon.Menu>
     </tray:NotifyIcon>
 </Window>
