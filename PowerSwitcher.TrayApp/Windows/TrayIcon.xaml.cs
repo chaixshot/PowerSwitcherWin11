@@ -229,7 +229,7 @@ namespace PowerSwitcher.TrayApp.Windows
             MenuItem enableShortcutsToggleItem = (MenuItem)sender;
 
             configuration.Data.ShowOnShortcutSwitch = !configuration.Data.ShowOnShortcutSwitch;
-            enableShortcutsToggleItem.Icon = new SymbolIcon(enableShortcutsToggleItem.IsChecked ? SymbolRegular.Checkmark24 : SymbolRegular.Empty);
+            enableShortcutsToggleItem.Icon = new SymbolIcon(configuration.Data.ShowOnShortcutSwitch ? SymbolRegular.Checkmark24 : SymbolRegular.Empty);
             enableShortcutsToggleItem.IsEnabled = !(Application.Current as App).HotKeyFailed;
 
             configuration.Save();
@@ -274,19 +274,6 @@ namespace PowerSwitcher.TrayApp.Windows
         {
             e.Handled = true;
             ShowFlyout?.Invoke();
-        }
-
-
-        private void TrayItemHistory_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void TrayItemSaved_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void TrayItemCapture_Click(object sender, RoutedEventArgs e)
-        {
         }
 
         private void TrayItemAbout_Click(object sender, RoutedEventArgs e)
