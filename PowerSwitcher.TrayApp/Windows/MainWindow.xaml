@@ -17,6 +17,7 @@
     Background="Transparent"
     Deactivated="Window_Deactivated"
     ExtendsContentIntoTitleBar="True"
+    Left="-500"
     PreviewKeyDown="Window_PreviewKeyDown"
     RenderOptions.ClearTypeHint="Enabled"
     ResizeMode="NoResize"
