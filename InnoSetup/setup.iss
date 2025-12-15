@@ -74,3 +74,6 @@ begin
     RegDeleteValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', 'Power Switcher');
   end;
 end;
+
+[UninstallRun]
+Filename: "{cmd}"; Parameters: "/C ""taskkill /im PowerSwitcher.TrayApp.exe /f /t"
