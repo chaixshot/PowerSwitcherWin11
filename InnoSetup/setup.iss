@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Power Switcher"
-#define MyAppVersion "0.4.6"
+#define MyAppVersion "0.4.7"
 #define MyAppPublisher "H@mer"
 #define MyAppURL "https://github.com/chaixshot/PowerSwitcherWin11"
 #define MyAppExeName "PowerSwitcher.TrayApp.exe"
@@ -25,7 +25,7 @@ DisableProgramGroupPage=yes
 ;PrivilegesRequired=lowest
 OutputDir=E:\github\PowerSwitcherWin11\InnoSetup
 OutputBaseFilename=PowerSwitcher
-SetupIconFile=E:\github\PowerSwitcherWin11\PowerSwitcher.TrayApp\Tray_Light.ico
+SetupIconFile=E:\github\PowerSwitcherWin11\PowerSwitcher.TrayApp\AppIcon.ico
 SolidCompression=yes
 WizardStyle=modern
 
