@@ -51,9 +51,9 @@ namespace PowerSwitcher.TrayApp.Windows
 
         public void UpdateTrayIcon()
         {
-            string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.ico";
+            string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.png";
             if (ShouldSystemUseDarkMode())
-                icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.ico";
+                icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.png";
             NotifyIcon.Icon = new BitmapImage(new Uri(icon));
         }
 

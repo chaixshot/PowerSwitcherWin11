@@ -53,7 +53,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Tray_Light.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseAndPackage|AnyCPU'">
     <OutputPath>..\Build\Release\</OutputPath>
@@ -222,8 +223,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Tray_Dark.ico" />
-    <Resource Include="Tray_Light.ico" />
+    <Resource Include="Tray_Dark.png" />
+    <Resource Include="Tray_Light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
