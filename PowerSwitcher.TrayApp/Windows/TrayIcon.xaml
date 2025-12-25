@@ -27,7 +27,7 @@
         x:Name="NotifyIcon"
         FocusOnLeftClick="False"
         LeftClick="Tray_LeftClick"
-        TooltipText="ScreenLookup">
+        TooltipText="Power Switcher">
         <tray:NotifyIcon.Menu>
             <ContextMenu />
         </tray:NotifyIcon.Menu>
