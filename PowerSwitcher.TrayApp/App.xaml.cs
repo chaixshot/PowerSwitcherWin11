@@ -6,8 +6,10 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
+using System.Windows.Interop;
 
 namespace PowerSwitcher.TrayApp
 {
@@ -16,6 +18,10 @@ namespace PowerSwitcher.TrayApp
     /// </summary>
     public partial class App : Application
     {
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern uint RegisterWindowMessage(string lpString);
+        private static uint taskbarCreatedMessage;
+
         public HotKeyService HotKeyManager { get; private set; }
         public bool HotKeyFailed { get; private set; }
 
@@ -49,6 +55,33 @@ namespace PowerSwitcher.TrayApp
             if (Configuration.Data.ShowOnShortcutSwitch) { registerHotkeyFromConfiguration(); }
 
             TrayIcon.CreateAltMenu();
+
+            // Handle for explorer.exe restart
+            {
+                taskbarCreatedMessage = RegisterWindowMessage("TaskbarCreated");
+
+                // MainWindow handle to listen for the OS broadcast
+                var wih = new WindowInteropHelper(MainWindow);
+                wih.EnsureHandle(); // Ensures the HWND exists even though the window is hidden
+
+                HwndSource source = HwndSource.FromHwnd(wih.Handle);
+                source.AddHook(HwndMessageHook);
+            }
+        }
+
+        // The message loop handler
+        private IntPtr HwndMessageHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            // Check if the message matches the "TaskbarCreated" ID assigned by Windows
+            if (msg == taskbarCreatedMessage)
+            {
+                TrayIcon?.Close();
+                TrayIcon = new TrayIcon(PowerManager, Configuration);
+                TrayIcon.Show();
+                TrayIcon.CreateAltMenu();
+            }
+
+            return IntPtr.Zero;
         }
 
         private void migrateSettings()
@@ -121,6 +154,5 @@ namespace PowerSwitcher.TrayApp
         {
             DisposeMutex();
         }
-
     }
 }
