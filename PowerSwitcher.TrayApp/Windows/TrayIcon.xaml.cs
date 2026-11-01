@@ -25,6 +25,7 @@ namespace PowerSwitcher.TrayApp.Windows
 
         MenuItem settingsOffACItem;
         MenuItem settingsOnAC;
+        private bool isClosed;
 
         public TrayIcon(IPowerManager powerManager, ConfigurationInstance<PowerSwitcherSettings> config)
         {
@@ -46,15 +47,44 @@ namespace PowerSwitcher.TrayApp.Windows
 
             // Tray light/dark theme
             UpdateTrayIcon();
-            SystemEvents.UserPreferenceChanged += (s, e) => UpdateTrayIcon();
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
+        }
+
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            UpdateTrayIcon();
         }
 
         public void UpdateTrayIcon()
         {
+            if (!Dispatcher.CheckAccess())
+            {
+                if (!Dispatcher.HasShutdownStarted)
+                    Dispatcher.BeginInvoke(new Action(UpdateTrayIcon));
+                return;
+            }
+
+            // A system preference callback may already be queued when the window closes.
+            if (isClosed) return;
+
             string icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Light.png";
             if (ShouldSystemUseDarkMode())
                 icon = "pack://application:,,,/PowerSwitcher.TrayApp;component/Tray_Dark.png";
             NotifyIcon.Icon = new BitmapImage(new Uri(icon));
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            isClosed = true;
+            SystemEvents.UserPreferenceChanged -= SystemEvents_UserPreferenceChanged;
+            pwrManager.PropertyChanged -= PwrManager_PropertyChanged;
+            NotifyIcon.RightClick -= ContextMenu_Popup;
+            ShowFlyout = null;
+
+            // WPF-UI registers a separate native tray window. Closing this WPF
+            // window alone does not unregister that icon from the shell.
+            NotifyIcon.Dispose();
+            base.OnClosed(e);
         }
 
         public void CreateAltMenu()
