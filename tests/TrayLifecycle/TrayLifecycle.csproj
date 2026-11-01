@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net481</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AppBuildDirectory Condition="'$(AppBuildDirectory)' == ''">$(MSBuildThisFileDirectory)..\..\Build\Release</AppBuildDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net481" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="PowerSwitcher.TrayApp"><HintPath>$(AppBuildDirectory)\PowerSwitcher.TrayApp.exe</HintPath></Reference>
+    <Reference Include="PowerSwitcher"><HintPath>$(AppBuildDirectory)\PowerSwitcher.dll</HintPath></Reference>
+    <Reference Include="Petrroll.Helpers"><HintPath>$(AppBuildDirectory)\Petrroll.Helpers.dll</HintPath></Reference>
+    <Reference Include="Wpf.Ui"><HintPath>$(AppBuildDirectory)\Wpf.Ui.dll</HintPath></Reference>
+    <Reference Include="Wpf.Ui.Tray"><HintPath>$(AppBuildDirectory)\Wpf.Ui.Tray.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

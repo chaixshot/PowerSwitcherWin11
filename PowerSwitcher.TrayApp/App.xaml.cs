@@ -21,6 +21,7 @@ namespace PowerSwitcher.TrayApp
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern uint RegisterWindowMessage(string lpString);
         private static uint taskbarCreatedMessage;
+        private HwndSource taskbarMessageSource;
 
         public HotKeyService HotKeyManager { get; private set; }
         public bool HotKeyFailed { get; private set; }
@@ -64,8 +65,8 @@ namespace PowerSwitcher.TrayApp
                 var wih = new WindowInteropHelper(MainWindow);
                 wih.EnsureHandle(); // Ensures the HWND exists even though the window is hidden
 
-                HwndSource source = HwndSource.FromHwnd(wih.Handle);
-                source.AddHook(HwndMessageHook);
+                taskbarMessageSource = HwndSource.FromHwnd(wih.Handle);
+                taskbarMessageSource.AddHook(HwndMessageHook);
             }
         }
 
@@ -73,7 +74,7 @@ namespace PowerSwitcher.TrayApp
         private IntPtr HwndMessageHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             // Check if the message matches the "TaskbarCreated" ID assigned by Windows
-            if (msg == taskbarCreatedMessage)
+            if (taskbarCreatedMessage != 0 && msg == taskbarCreatedMessage)
             {
                 TrayIcon?.Close();
                 TrayIcon = new TrayIcon(PowerManager, Configuration);
@@ -145,9 +146,12 @@ namespace PowerSwitcher.TrayApp
 
         private void App_OnExit(object sender, ExitEventArgs e)
         {
-            DisposeMutex();
+            taskbarMessageSource?.RemoveHook(HwndMessageHook);
+            taskbarMessageSource = null;
+            TrayIcon?.Close();
             PowerManager?.Dispose();
             HotKeyManager?.Dispose();
+            DisposeMutex();
         }
 
         ~App()
