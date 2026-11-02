@@ -35,7 +35,7 @@ namespace PowerSwitcher.TrayApp
             ApplicationThemeManager.ApplySystemTheme();
             SystemThemeWatcher.Watch(
                 this,                                    // Window class
-                WindowBackdropType.Mica, // Background type
+                WindowBackdropType.Acrylic, // Background type
                 true                                     // Whether to change accents automatically
             );
 

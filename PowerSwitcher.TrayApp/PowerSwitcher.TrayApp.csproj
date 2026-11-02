@@ -145,6 +145,7 @@
     <Compile Include="Extensions\BlurWindowExtensions.cs" />
     <Compile Include="Extensions\InvertableVisibilityConvertor.cs" />
     <Compile Include="Extensions\OpacityConvertor.cs" />
+    <Compile Include="Extensions\PowerSchemaIconConverter.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Resources\AppStrings.Designer.cs">
       <AutoGen>True</AutoGen>
